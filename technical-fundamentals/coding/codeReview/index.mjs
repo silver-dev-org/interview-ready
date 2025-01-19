@@ -3,6 +3,17 @@ function mapArray(array) {
   return array.map((el) => !!el);
 }
 
+class Player {}
+let player;
+
+// declarative naming mismatch
+function getPlayer() {
+  if (!player) {
+    player = new Player();
+  }
+  return player;
+}
+
 // use named parameters
 function evaluateChallenge(challenge, result, candidate, difficulty) {
   if (challenge === result) {
@@ -33,7 +44,7 @@ function countViews(key) {
   if (!tracker[key]) {
     tracker[key] = 0;
   }
-  return tracker[key]++;
+  return ++tracker[key];
 }
 
 // Variables & Control Flow
@@ -157,7 +168,7 @@ function formatProductNames(name, series) {
 
 // Error handling
 
-// Defensive Programming (Bad!)
+// Defensive Programming (Questionable)
 
 function validateUser(user) {
   if (typeof user !== "object" || user.constructor.name !== "User") {
@@ -213,10 +224,13 @@ async function updateUserGood(user, retries) {
     }
 
     if (isFetchError(e)) {
+      console.warn(
+        `Updating user ${user.id} failed due to a fetch error. Retrying... (${retries + 1}/${MAX_RETRIES})`,
+      );
       return updateUserGood(user, retries + 1);
     }
-    console.warn(
-      "Updating user ${user.id} has faield. Trying again after ${retries} retries.",
+    console.error(
+      `Updating user ${user.id} failed due to an unexpected error. Retries: ${retries}.`,
     );
     throw e;
   }
