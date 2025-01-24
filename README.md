@@ -8,7 +8,7 @@ Consultá la [Candidate Guide](https://docs.silver.dev/candidate-guide) para un 
 
 Los siguientes materiales aplican para casi todas las posiciones en Engineering:
 
-- [Coding Challenges](coding-challenges)
+- [Coding Challenges](technical-fundamentals/coding/problems/problems.md)
 - [Behavioral Prepping](https://docs.silver.dev/candidate-guide#1%EF%B8%8F%E2%83%A3recruiter--company-screenings)
 - [System Design](https://docs.silver.dev/candidate-guide#4%EF%B8%8F%E2%83%A3system-design-interviews)
 
