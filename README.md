@@ -8,20 +8,20 @@ Consultá la [Candidate Guide](https://docs.silver.dev/candidate-guide) para un 
 
 Los siguientes materiales aplican para casi todas las posiciones en Engineering:
 
-- [Coding Challenges](https://github.com/conanbatt/interview-practice/tree/main/coding-challenges)
+- [Coding Challenges](technical-fundamentals/coding/problems/problems.md)
 - [Behavioral Prepping](https://docs.silver.dev/candidate-guide#1%EF%B8%8F%E2%83%A3recruiter--company-screenings)
 - [System Design](https://docs.silver.dev/candidate-guide#4%EF%B8%8F%E2%83%A3system-design-interviews)
 
 ## **Preparación Específica por Perfil**
 
-- [Backend](https://github.com/conanbatt/interview-practice/tree/main/profile-specific-challenges/backend)
-- [Frontend](https://github.com/conanbatt/interview-practice/tree/main/profile-specific-challenges/frontend)
-- [Data Engineering](https://github.com/conanbatt/interview-practice/tree/main/profile-specific-challenges/data-engineering)
+- [Backend](profile-specific-challenges/backend)
+- [Frontend](profile-specific-challenges/frontend)
+- [Data Engineering](profile-specific-challenges/data-engineering)
 
 ## **Preparación Avanzada & por Skills**
 
-- [Quizzes](https://github.com/conanbatt/interview-practice/tree/main/misc/quizzes)
-- [Tipeo](https://github.com/conanbatt/interview-practice/tree/main/misc/typing)
+- [Quizzes](misc/quizzes)
+- [Tipeo](misc/typing)
 
 ## **SilverEd - Recuperá hasta $1,000 de lo que invertís en perfeccionamiento**
 
@@ -43,20 +43,20 @@ Consult the [Interview Readiness Guide](https://docs.silver.dev/candidate-guide)
 
 The following materials apply for almost any engineering role.
 
-- [Coding Challenges](https://github.com/conanbatt/interview-practice/tree/main/coding-challenges)
+- [Coding Challenges](coding-challenges)
 - [Behavioral Prepping](https://docs.silver.dev/candidate-guide#1%EF%B8%8F%E2%83%A3recruiter--company-screenings)
 - [System Design](https://docs.silver.dev/candidate-guide#4%EF%B8%8F%E2%83%A3system-design-interviews)
 
 ## **Profile-specific Prepping**
 
-- [Backend](https://github.com/conanbatt/interview-practice/tree/main/profile-specific-challenges/backend)
-- [Frontend](https://github.com/conanbatt/interview-practice/tree/main/profile-specific-challenges/frontend)
-- [Data Engineering](https://github.com/conanbatt/interview-practice/tree/main/profile-specific-challenges/data-engineering)
+- [Backend](profile-specific-challenges/backend)
+- [Frontend](profile-specific-challenges/frontend)
+- [Data Engineering](profile-specific-challenges/data-engineering)
 
 ## **Advanced & Skill-based Prepping**
 
-- [Quizzes](https://github.com/conanbatt/interview-practice/tree/main/misc/quizzes)
-- [Typing](https://github.com/conanbatt/interview-practice/tree/main/misc/typing)
+- [Quizzes](misc/quizzes)
+- [Typing](misc/typing)
 
 ## **SilverEd - Recoup up to 1000$ on your education spending**
 
