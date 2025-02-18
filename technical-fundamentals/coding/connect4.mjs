@@ -15,7 +15,6 @@ export const PLAYER_TWO = 2;
 export class Connect4 {
   constructor() {}
   play(col) {}
-  getValue(row, col) {}
-  winner() {}
+  checkWinner() {}
   print() {}
 }
