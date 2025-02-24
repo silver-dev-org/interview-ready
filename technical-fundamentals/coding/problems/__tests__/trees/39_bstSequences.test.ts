@@ -4,7 +4,7 @@ const createNode = <T>(value: T, left?: TreeNode<T>, right?: TreeNode<T>): TreeN
     return { value, left, right };
 };
 describe('bstSequences', () => {
-    test('returns correct sequences for valid input', () => {
+    test('returns correct sequences for valid input with 3 nodes', () => {
         /*
                     2
                    / \
@@ -14,7 +14,7 @@ describe('bstSequences', () => {
             createNode(1),
             createNode(3)
         );
-        expect(bstSequences(root1)).toEqual([[2, 1, 3], [2, 3, 1]]);
+        expect(bstSequences(root1)).toEqual(expect.arrayContaining([[2, 1, 3], [2, 3, 1], [1,2,3], [1,3,2], [3,1,2], [3,2,1]]));
     });
 
     test('returns correct sequences for valid input', () => {
@@ -35,7 +35,7 @@ describe('bstSequences', () => {
                 createNode(6),
                 createNode(8))
         );
-        expect(bstSequences(root2)).toEqual([
+        expect(bstSequences(root2)).toEqual(expect.arrayContaining([
             [5, 3, 7, 2, 4, 6, 8],
             [5, 3, 7, 2, 6, 4, 8],
             [5, 3, 7, 4, 2, 6, 8],
@@ -44,6 +44,6 @@ describe('bstSequences', () => {
             [5, 7, 3, 2, 6, 4, 8],
             [5, 7, 3, 4, 2, 6, 8],
             [5, 7, 3, 4, 6, 2, 8]
-        ]);
+        ]));
     });
 });

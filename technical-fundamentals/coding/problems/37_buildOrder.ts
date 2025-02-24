@@ -10,9 +10,9 @@
 // EXAMPLE Input:
 // projects: a, b, c, d, e, f
 // dependencies: (a, d), (f, b), (b, d), (f, a), (d, c)
-// Output: F, e, a, b, d, c
+// Output: e, f, a, b, d, c
 // ```
 
 export default function buildOrder(projects: string[], dependencies: string[][]): string[] | string {
- 
+
 }

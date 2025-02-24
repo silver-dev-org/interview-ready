@@ -26,6 +26,10 @@ describe("05 - oneAway", () => {
     expect(oneAway("abcd", "efgh")).toEqual(false); // More than one edit away
   });
 
+  test("More Than One Edit Away #2", () => {
+    expect(oneAway("palesa", "pale")).toEqual(false); // More than one edit away #2
+  });
+
   test("Empty Strings", () => {
     expect(oneAway("", "")).toEqual(true); // Empty strings are zero edits away
   });
