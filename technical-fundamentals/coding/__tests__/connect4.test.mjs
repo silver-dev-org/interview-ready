@@ -35,14 +35,14 @@ describe("Connect4", () => {
 
   it("it should detect diagonal winning", () => {
     const c4 = new Connect4({ width: 10, height: 10 });
-    const plays = [1, 2, 2, 3, 4, 3, 3, 4, 5, 4];
+    const plays = [1, 2, 2, 3, 4, 3, 3, 4, 5, 4, 4];
     plays.forEach((p) => c4.play(p));
     expect(c4.winner()).toEqual(PLAYER_ONE);
   });
 
   it("it should detect diagonal winning", () => {
     const c4 = new Connect4({ width: 10, height: 10 });
-    const plays = [1, 2, 2, 3, 4, 3, 3, 4, 5, 4].reverse();
+    const plays = [1, 2, 2, 3, 4, 3, 3, 4, 5, 4, 4].reverse();
     plays.forEach((p) => c4.play(p));
     expect(c4.winner()).toEqual(PLAYER_ONE);
   });
