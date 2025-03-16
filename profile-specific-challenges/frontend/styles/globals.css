@@ -1,0 +1,110 @@
+body {
+    margin: 0;
+    padding: 30px;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0.5em 0;
+}
+
+p {
+    margin: 0;
+    padding: 0.5em 0;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.5em 1em;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    justify-content: center;
+    margin: 50px;
+
+    form {
+        display: flex;
+        padding: 40px;
+        border-radius: 20px;
+        flex-direction: column;
+        gap: 8px;
+        max-width: 480px;
+        width: 100%;
+        background-color: #ddd;
+
+        label {
+            font-size: medium;
+            color: #007bff;
+        }
+
+        input {
+            border-radius: 8px;
+            border: none;
+            padding: 8px 4px;
+            text-indent: 6px;
+            font-size: large;
+        }
+
+        button {
+            margin-top: 16px;
+            border-radius: 8px;
+            padding: 12px 0;
+            font-size: large;
+        }
+    }
+
+    .error-container {
+        background-color: #f52b1c;
+        padding: 30px;
+        border-radius: 20px;
+        color: #fff;
+        animation-name: slide-in;
+        animation-duration: 0.2s;
+    }
+}
+
+@keyframes slide-in {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

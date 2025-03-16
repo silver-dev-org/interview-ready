@@ -1,3 +1,5 @@
+import SignupFormResult from "@/pages/challenges/signup/signup";
+
 function API(data) {
   return new Promise((res) => {
     setTimeout(
@@ -12,23 +14,29 @@ function API(data) {
 }
 
 export default function SignupForm() {
-  return(
+  return (
     <>
-      <h1>
-        Signup Form
-      </h1>
-      <p>
+      <h1>Signup Form</h1>
+      <div>
         Build a user Signup form in React with the following features.
+        <ol>
+          <li>An email and a password input</li>
+          <li>Email must have an “@” and the domain side must include a “.”</li>
+          Password must include
+          <ol>
+            <li>At least one special character </li>
+            <li>One number </li>
+            <li>Be at least 8 characters</li>
+          </ol>
+          <li>Submission request handling 1. Utilze the mock API function to handle submissions</li>
+          <li>Basic aesthetics with pure CSS</li>
+        </ol>
+      </div>
 
-        1. An email and a password input
-        2. Email must have an “@” and the domain side must include a “.”
-        3. Password must include
-            1.  at least one special character
-            2. one number and be at least 8 characters
-        4. Submission request handling  
-           1. Utilze the mock API function to handle submissions
-        5. Basic aesthetics with pure CSS
-      </p>
+      <hr />
+      <div className="form-container">
+        <SignupFormResult sendData={API} />
+      </div>
     </>
-  )
+  );
 }
