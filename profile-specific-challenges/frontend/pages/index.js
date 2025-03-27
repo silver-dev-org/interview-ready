@@ -14,7 +14,7 @@ const paths = [
   "weather",
 ];
 
-const completedChallenges = new Set(["signup"]);
+const completedChallenges = new Set(["signup", "autocomplete"]);
 const ongoingChallenges = new Set(["tetris"]);
 
 export default function Home() {

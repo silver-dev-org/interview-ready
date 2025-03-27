@@ -108,3 +108,46 @@ button:hover {
         transform: scale(1);
     }
 }
+
+.autocomplete {
+    max-width: 450px;
+    .search-box {
+        display: flex;
+        padding: 6px;
+        gap: 4px;
+        background-color: #fafafa;
+
+        input {
+            background-color: transparent;
+        }
+
+        button {
+            margin-left: auto;
+        }
+
+        .tag {
+            background-color: #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 10px;
+            border-radius: 2000px;
+
+            button {
+                padding: 3px;
+                border-radius: 4px;
+                background: #777;
+                color: #ccc;
+            }
+        }
+    }
+
+    .options {
+        .option-row {
+            display: flex;
+            gap: 4px;
+            padding: 8px;
+        }
+    }
+}
