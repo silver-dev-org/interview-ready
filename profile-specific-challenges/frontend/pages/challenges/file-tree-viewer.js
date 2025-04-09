@@ -1,3 +1,5 @@
+import FileTreeViewerComponent from "./file-tree-viewer/main";
+
 export default function FileTreeViewer() {
   return (
     <>
@@ -14,6 +16,8 @@ export default function FileTreeViewer() {
           <li>Basic aesthetics with pure CSS</li>
         </ol>
       </div>
+      <hr />
+      <FileTreeViewerComponent />
     </>
   );
 }

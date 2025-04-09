@@ -6,6 +6,12 @@ body {
     color: #333;
 }
 
+.optimized-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
 h1,
 h2,
 h3,
@@ -148,6 +154,18 @@ button:hover {
             display: flex;
             gap: 4px;
             padding: 8px;
+        }
+    }
+}
+
+.file-tree-viewer {
+    width: 400px;
+
+    .item {
+        background-color: #eee;
+
+        &:focus {
+            background-color: red;
         }
     }
 }
