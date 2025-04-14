@@ -1,11 +1,42 @@
-# Agent Router
+# Prompt Executor Challenge
 
-## Introduction
+At **XXX**, we are building a system to handle user queries.
 
-We are building an pre-prompt shim layer that will route requests to the appropriate agent based on the request's content.
+This system will leverage **Generative AI**. To do so, it will generate “prompts” — requests to LLMs — based on user inputs, documentation, API results, etc.
 
-The system will receive a user-generated prompt and route it to the most suitable agent based on the prompt's content.
+A **prompt** is, therefore, a text string that will be sent to an LLM. For the LLM backend, we are considering using **ChatGPT**, **Gemini**, or **Claude**.
 
-The Test Data set from HotPotQA: http://curtis.ml.cmu.edu/datasets/hotpot/hotpot_test_fullwiki_v1.json
+```python
+class Executor:
+    ...
+    def run(prompt, metadata):
+        ...
+        return response
+```
 
-## Deliverable
+The system must handle abstraction over the backend call, selecting the most suitable model based on the `prompt` and the provided `metadata`.
+
+You are free to define what metadata includes. Consider the following:
+
+- 💸 **Cost** of resolving the prompt  
+- ⏱️ **Estimated response time**  
+- 🔐 **Security**: Is it safe to execute and return this prompt to the user?  
+- 📊 **Analytics**: It may be useful to track execution statistics, such as:
+  - What percentage of prompts are routed to each model  
+  - Cost per model and total system cost  
+  - Logs for future analysis
+
+---
+
+## ✅ Expected Deliverables
+
+1. The implementation of the `PromptExecutor`
+2. Run prompts from the HotPotQA test dataset:  
+   http://curtis.ml.cmu.edu/datasets/hotpot/hotpot_test_fullwiki_v1.json
+3. Calculate:
+   - Total and per-word **cost**
+   - Total and per-word **response time**
+   - Number of requests routed to each model
+   - The **log** produced for future analytics (format is up to you)
+
+---
