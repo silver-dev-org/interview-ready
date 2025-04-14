@@ -130,11 +130,9 @@ function completeInterview(candidate, interview, result) {
   interview.finished();
 
   if (result === "passed") {
-    candidate.passed();
-    candidate.submitOffer();
+    passInterview(candidate, interview);
   } else {
-    candidate.failed();
-    candidate.submitFeedback();
+    failInterview(candidate, interview);
   }
 }
 
