@@ -15,10 +15,9 @@ The flow must include getting the following information from the user:
 
 The flow must include error handling and loading states. Include the following use cases:
 
-Email: alreadytaken@gmail.com -> "Email is already taken"
-Country: Uruguay -> "This country is not supported"
-
-Assume requests, mocked or otherwise, have at least 200ms of delay.
+1. Email: alreadytaken@gmail.com -> "Email is already taken"
+2. Country: Uruguay -> "This country is not supported"
+3. Form Submissions, mocked or otherwise, should have at least 200ms of delay.
 
 ## Evaluation Criteria
 - User experience and polish
