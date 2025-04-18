@@ -10,8 +10,8 @@ describe("08 - zeroMatrix", () => {
       [0, 0],
       [0, 4],
     ];
-    const resultMatrix = zeroMatrix(matrix);
-    expect(resultMatrix).toEqual(expected);
+    zeroMatrix(matrix);
+    expect(matrix).toEqual(expected);
   });
 
   test("zeroes 3x3 matrix", () => {
@@ -25,8 +25,8 @@ describe("08 - zeroMatrix", () => {
       [4, 0, 6],
       [0, 0, 0],
     ];
-    const resultMatrix = zeroMatrix(matrix);
-    expect(resultMatrix).toEqual(expected);
+    zeroMatrix(matrix);
+    expect(matrix).toEqual(expected);
   });
 
   test("zeroes 4x4 matrix", () => {
@@ -42,8 +42,8 @@ describe("08 - zeroMatrix", () => {
       [9, 10, 0, 12],
       [13, 14, 0, 16],
     ];
-    const resultMatrix = zeroMatrix(matrix);
-    expect(resultMatrix).toEqual(expected);
+    zeroMatrix(matrix);
+    expect(matrix).toEqual(expected);
   });
 
   test("2 zeroes 4x4 matrix", () => {
@@ -59,7 +59,7 @@ describe("08 - zeroMatrix", () => {
       [0, 10, 0, 12],
       [0, 14, 0, 16],
     ];
-    const resultMatrix = zeroMatrix(matrix);
-    expect(resultMatrix).toEqual(expected);
+    zeroMatrix(matrix);
+    expect(matrix).toEqual(expected);
   });
 });
