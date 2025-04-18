@@ -3,6 +3,11 @@
 We are going to build a digital wallet web-based signup flow. You are tasked with designing, implementing and deliverying a usable demo of a signup flow.
 We want to see your ability to envision and ship a digital product.
 
+Example from V0:
+
+<img width="654" alt="image" src="https://github.com/user-attachments/assets/dde1cd1b-ee22-46f0-8996-c245271c575a" />
+
+
 ## Requirements
 
 Build an experience for handling user registration and KYC verification.
