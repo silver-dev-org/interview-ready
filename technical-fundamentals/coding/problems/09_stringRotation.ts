@@ -10,4 +10,8 @@ function isSubstring(s1: string, s2: string): boolean {
 
 export default function stringRotation(s1: string, s2: string): boolean {
 
+    if (s1.length !== s2.length) return false;
+
+    return isSubstring(s1 + s1, s2);
+
 }

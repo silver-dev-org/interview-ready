@@ -6,4 +6,10 @@
 
 export default function URLify (s1 : string): string {
 
+    return s1.split('').map(item => {
+        if (item === ' ') {
+            return '%20';
+        }
+        return item;
+    }).join('');
 }
