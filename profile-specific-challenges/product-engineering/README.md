@@ -10,13 +10,15 @@ Example from V0:
 
 ## Requirements
 
-Build a uniquely flavored user experience for handling user registration and KYC verification.
+Build a uniquely flavored user experience for handling user registration and KYC verification. Think of the audience for your experience and write the copy and build the experience around it. Original additions are encouarged.
 
 The experience must be deployed and usable from a public-facing landing where the user can initiate the signup flow.
 
 The flow must include getting the following information from the user:
 1. User / Email registration
 2. KYC verification information: name, full address, date of birth, and government ID
+
+** IMPORTANT **
 
 The flow must include error handling and loading states. Include the following use cases:
 
