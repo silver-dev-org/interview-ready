@@ -10,7 +10,7 @@ Example from V0:
 
 ## Requirements
 
-Build a uniquely flavored user experience for handling user registration and KYC verification. Think of the audience for your experience and write the copy and build the experience around it. Original additions are encouarged.
+Build a uniquely flavored user experience for handling user registration and KYC verification. Think of the target audience and how to address them with your product. Original additions are encouraged.
 
 The experience must be deployed and usable from a public-facing landing where the user can initiate the signup flow.
 
@@ -36,6 +36,7 @@ The experience must be the best you can produce - errors in states, flows, or de
 ## Tips & Tricks
 - Use your preferred tech stack. We want to evaluate the product on the technical implementation.
 - The prompt is purposefully ambiguous to encourage creative solutions. Bring your own ideas and creativity to the table.
+- You are welcome to use templates, but make sure to share them so we can distinguish your unique contributions.
 - Use of AI is encouraged, but pay attention to quality.
 - No third-party integrations are necessary - you can mock responses from your own server or client.
 - Consult the [Takehome Guide](https://docs.silver.dev/interview-ready/technical-fundamentals/code-quality/guia-de-takehomes) for more tips
