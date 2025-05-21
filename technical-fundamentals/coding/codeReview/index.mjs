@@ -149,8 +149,8 @@ function formatSerialNames(name, version) {
   return `series-${name}-${version}`;
 }
 
-function formatProductNames(name, series) {
-  return `${series}-product-${name}`;
+function formatProductNames(series, name) {
+  return `product-${series}-${name}`;
 }
 
 // Error handling
