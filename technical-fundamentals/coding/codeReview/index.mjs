@@ -130,10 +130,7 @@ function completeInterview(candidate, interview, result) {
 // Atomicity
 
 function transferMoney(sender, receiver, amount) {
-  sender.funds -= amount;
-
-  if (sender.funds < 0) {
-    sender.funds += amount;
+  if (sender.funds - amount < 0) {
     throw new Error("Insufficient funds");
   }
 
@@ -141,6 +138,7 @@ function transferMoney(sender, receiver, amount) {
     throw new Error("Receiver is unable to receive funds");
   }
 
+  sender.funds -= amount;
   receiver.funds += amount;
   return [sender, receiver];
 }
