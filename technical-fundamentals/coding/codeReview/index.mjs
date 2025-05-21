@@ -1,13 +1,13 @@
 // non-declarative naming
-function mapArray(array) {
-  return array.map((el) => !!el);
+function mapToBooleans(array) {
+  return array.map(Boolean);
 }
 
 class Player {}
 let player;
 
 // declarative naming mismatch
-function getPlayer() {
+function getOrCreatePlayer() {
   if (!player) {
     player = new Player();
   }
@@ -15,7 +15,7 @@ function getPlayer() {
 }
 
 // use named parameters
-function evaluateChallenge(challenge, result, candidate, difficulty) {
+function evaluateChallenge({ challenge, result, candidate, difficulty }) {
   if (challenge === result) {
     return `${candidate} has successfully completed the ${difficulty} challenge`;
   }
@@ -23,17 +23,18 @@ function evaluateChallenge(challenge, result, candidate, difficulty) {
 }
 
 // Oversplitting functions - "The rule of 3"
-
-function splitWords(str) {
-  return str.split(" ");
-}
-function wordMapper(words) {
-  hash = {};
-  return words.map((word) => (hash[word] = hash[word] ? 0 : (hash[word] += 1)));
-}
-
 function wordCounter(string) {
-  return wordMapper(splitWords(string));
+  const words = string.split(" ");
+
+  const wordCount = words.reduce((hash, word) => {
+    hash[word] ??= 0;
+
+    hash[word]++;
+
+    return hash;
+  }, {});
+
+  return wordCount;
 }
 
 // Avoid sideEffects
@@ -41,10 +42,9 @@ function wordCounter(string) {
 const tracker = {};
 
 function countViews(key) {
-  if (!tracker[key]) {
-    tracker[key] = 0;
-  }
-  return ++tracker[key];
+  const views = tracker[key] || 0;
+
+  return views + 1;
 }
 
 // Variables & Control Flow
@@ -61,88 +61,76 @@ function countViews(key) {
     - Replace nesting with variables or top level fn calls
 */
 
-function parsePeople(people) {
-  const groupA = []; // minors
-  const groupB = []; // adults
-  const groupC = []; // elderly
+function groupByAgeGroups(people) {
+  const minors = [];
+  const adults = [];
+  const elderly = [];
 
-  let i = 0;
-  while (i < people.length) {
-    const person = people[i];
-    if (person.age && person.age > 18) {
-      if (person.age && person.age > 60) {
-        groupC.push(person);
-      } else {
-        groupB.push(person);
-      }
-    } else if (person.age) {
-      groupA.push(person);
-    } else {
-      delete people[i]; // remove invalid records
+  const hasAge = (person) => person.age;
+
+  people.filter(hasAge).forEach((person) => {
+    const ELDERLY_AGE_THRESHOLD = 60;
+    const ADULT_AGE_THRESHOLD = 18;
+
+    if (person.age > ELDERLY_AGE_THRESHOLD) {
+      elderly.push(person);
+      return;
     }
-    i++;
-  }
 
-  return [groupA, groupB, groupC];
+    if (person.age > ADULT_AGE_THRESHOLD) {
+      adults.push(person);
+      return;
+    }
+
+    minors.push(person);
+  });
+
+  return [minors, adults, elderly];
 }
 
 // General Programming
 
 // Dry
+function createBoard({ rows, cols }) {
+  return Array(rows)
+    .fill(0)
+    .map(() => Array(cols));
+}
 
 function initTicTacToe() {
-  const board = Array(3)
-    .fill(0)
-    .map(() => Array(3));
+  const board = createBoard({ rows: 3, cols: 3 });
   board[1][1] = "X";
   return board;
 }
 
 function initConnect4() {
-  const board = Array(6)
-    .fill(0)
-    .map(() => Array(7));
+  const board = createBoard({ rows: 6, cols: 7 });
   board[0][0] = "O";
   return board;
 }
 
 function initSudoku() {
-  return Array(9)
-    .fill(0)
-    .map(() => Array(9));
+  return createBoard({ rows: 9, cols: 9 });
 }
 
 // Over-abstractions
-
-function passInterview(candidate, interview) {
-  interview.finished();
-  candidate.passed();
-  candidate.submitOffer();
-}
-
-function failInterview(candidate, interview) {
-  interview.finished();
-  candidate.failed();
-  candidate.submitFeedback();
-}
 
 function completeInterview(candidate, interview, result) {
   interview.finished();
 
   if (result === "passed") {
-    passInterview(candidate, interview);
+    candidate.passed();
+    candidate.submitOffer();
   } else {
-    failInterview(candidate, interview);
+    candidate.failed();
+    candidate.submitFeedback();
   }
 }
 
 // Atomicity
 
 function transferMoney(sender, receiver, amount) {
-  sender.funds -= amount;
-
-  if (sender.funds < 0) {
-    sender.funds += amount;
+  if (sender.funds - amount < 0) {
     throw new Error("Insufficient funds");
   }
 
@@ -150,6 +138,7 @@ function transferMoney(sender, receiver, amount) {
     throw new Error("Receiver is unable to receive funds");
   }
 
+  sender.funds -= amount;
   receiver.funds += amount;
   return [sender, receiver];
 }
@@ -160,22 +149,11 @@ function formatSerialNames(name, version) {
   return `series-${name}-${version}`;
 }
 
-function formatProductNames(name, series) {
-  return `${series}-product-${name}`;
+function formatProductNames(series, name) {
+  return `product-${series}-${name}`;
 }
 
 // Error handling
-
-// Defensive Programming (Questionable)
-
-function validateUser(user) {
-  if (typeof user !== "object" || user.constructor.name !== "User") {
-    return false;
-  }
-  const hasName = !!user.name;
-  return hasName;
-}
-
 // Invariant Programming (Good!)
 
 function validateUser(user) {
@@ -191,44 +169,29 @@ function validateUser(user) {
 // Catch what you can handle
 // Add context
 // Do not eat errors
+async function updateUser(user, retries = 0) {
+  const MAX_RETRIES = 3;
 
-const MAX_RETRIES = 3;
-
-async function updateUserBad(user, retries) {
   try {
     await API.updateUser(user);
   } catch (e) {
-    if (MAX_RETRIES === 3) {
-      return;
-    }
-
-    if (isFetchError(e)) {
-      return updateUserBad(user, retries + 1);
-    }
-    throw e;
-  }
-
-  return user;
-}
-
-async function updateUserGood(user, retries) {
-  try {
-    await API.updateUser(user);
-  } catch (e) {
-    if (MAX_RETRIES === 3) {
+    if (MAX_RETRIES === retries) {
       throw new Error(
-        `User ${user.id} was not updated after ${retries} retries.`,
+        `User ${user.id} was not updated after ${retries} retries.`
       );
     }
+
+    const retryCount = retries + 1;
 
     if (isFetchError(e)) {
       console.warn(
-        `Updating user ${user.id} failed due to a fetch error. Retrying... (${retries + 1}/${MAX_RETRIES})`,
+        `Updating user ${user.id} failed due to a fetch error. Retrying... (${retryCount}/${MAX_RETRIES})`
       );
-      return updateUserGood(user, retries + 1);
+      return updateUser(user, retryCount);
     }
+
     console.error(
-      `Updating user ${user.id} failed due to an unexpected error. Retries: ${retries}.`,
+      `Updating user ${user.id} failed due to an unexpected error. Retries: ${retries}.`
     );
     throw e;
   }
@@ -239,31 +202,25 @@ async function updateUserGood(user, retries) {
 // Cohesion vs Dependency
 
 class StringUtils {
-  stringCleaner(string) {
+  static #clean(string) {
     return string.trim().replaceAll("%20", " ");
   }
 
-  formatEmail(emailService) {
-    let result = emailService.message;
-    if (emailService.options.trim) {
-      result = stringCleaner(string);
+  static format(message, options) {
+    if (options.clean) {
+      return this.#clean(message);
     }
-    return result;
+
+    return message;
   }
 }
 
 class EmailService {
-  message;
-  options = { trim: true };
-
-  constructor(message, options) {
-    this.message = message;
-    this.options = options;
-  }
-  sendEmail() {
-    StringUtils.formatEmail(this);
+  sendEmail(message, recipient) {
+    return `Sent ${message} to ${recipient}`;
   }
 }
 
-const emailService = new EmailService(" test email ", { trim: true });
-emailService.sendEmail();
+const emailService = new EmailService(); // Initialize with credentials and SMTP config
+const formattedMessage = StringUtils.format(" test email ", { clean: true });
+emailService.sendEmail(formattedMessage, "test@silver.dev");
