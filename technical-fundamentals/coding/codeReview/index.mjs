@@ -1,6 +1,6 @@
 // non-declarative naming
-function mapArray(array) {
-  return array.map((el) => !!el);
+function mapToBooleans(array) {
+  return array.map(Boolean);
 }
 
 class Player {}
