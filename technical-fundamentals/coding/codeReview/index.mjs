@@ -154,17 +154,6 @@ function formatProductNames(series, name) {
 }
 
 // Error handling
-
-// Defensive Programming (Questionable)
-
-function validateUser(user) {
-  if (typeof user !== "object" || user.constructor.name !== "User") {
-    return false;
-  }
-  const hasName = !!user.name;
-  return hasName;
-}
-
 // Invariant Programming (Good!)
 
 function validateUser(user) {
