@@ -7,7 +7,7 @@ class Player {}
 let player;
 
 // declarative naming mismatch
-function getPlayer() {
+function getOrCreatePlayer() {
   if (!player) {
     player = new Player();
   }
