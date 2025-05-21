@@ -11,125 +11,91 @@ function codeRunner(submission) {
 }
 
 class Candidate {
-  interviews = [];
-  passedInterview;
-  name;
-
-  constructor(name) {
-    this.name = name;
-  }
-}
-
-class BaseInterview {
-  expectation;
-  candidate;
-  submission;
-
-  constructor(candidate) {
-    this.candidate = candidate;
-  }
-
-  processSubmission(submission) {
-    this.submission = submission;
-    if (submission === expectation) {
-      this.candidate.passedInterview = true;
-    }
-  }
-}
-
-class LiveCodingInterview extends BaseInterview {
-  processSubmission(submission) {
-    this.submission = submission;
-    const result = this.codeRunner();
-    if (result === this.expectation) {
-      this.candidate.passedInterview = true;
-    }
-  }
-
-  codeRunner() {
-    return codeRunner(this.submission);
-  }
-}
-
-const cand = new Candidate("Gabriel");
-const interview = new LiveCodingInterview(cand);
-cand.interviews.push(interview);
-interview.processSubmission("submission");
-console.assert(candidate.passedInterview);
-
-// Alternative implementation
-
-class Candidate {
   #interviews = [];
   #name;
 
   constructor(name) {
-    this.name = name;
+    this.#name = name;
   }
 
   get name() {
-    this.#name;
+    return this.#name;
   }
 
-  startInterview() {
-    if (this.currentInterview()) {
+  startInterview(interview) {
+    if (this.currentInterview) {
       throw new Error(
-        "Candidate has an active Interview. Do not start a new one",
+        "Candidate has an active Interview. Do not start a new one"
       );
     }
-    const interview = new LiveCodingInterview();
+
     this.#interviews.push(interview);
   }
 
   submit(code) {
+    if (!this.currentInterview) {
+      throw new Error("Submitting code without interview");
+    }
+
     this.currentInterview.processSubmission(code);
   }
 
-  get interviewStatus() {
-    this.currentInterview.status();
+  get currentInterview() {
+    return this.#interviews.filter(
+      (interview) => interview.status === "pending"
+    )[0];
   }
 
-  currentInterview() {
-    return this.#interviews.filter((int) => int.status === "pending")[0];
+  get passedInterviews() {
+    return this.#interviews.filter(
+      (interview) => interview.status === "passed"
+    );
   }
 }
 
 class InterviewStatus {
   #expectation;
-  #status = "pending";
+  #status;
 
-  constructor(expectation) {
+  constructor({ expectation }) {
     this.#expectation = expectation;
+    this.#status = "pending";
+  }
+
+  get status() {
+    return this.#status;
   }
 
   processResults(results) {
     const passed = results === this.#expectation;
     this.#status = passed ? "passed" : "failed";
-    return this.#status;
+    return this.status;
   }
 }
 
 class LiveCodingInterview {
   #interviewStatus;
+
   constructor() {
-    this.#interviewStatus = new InterviewStatus("passed");
+    this.#interviewStatus = new InterviewStatus({ expectation: "passed" });
   }
 
   processSubmission(submission) {
-    this.#interviewStatus.processResults(this.getResults());
-    return this.#interviewStatus.status;
-  }
-
-  getResults() {
-    return codeRunner(this.submission);
+    const result = codeRunner(submission);
+    this.#interviewStatus.processResults(result);
+    return this.status;
   }
 
   get status() {
-    this.#interviewStatus.status();
+    return this.#interviewStatus.status;
   }
 }
 
 const candidate = new Candidate("Gabriel");
-candidate.startLiveCodingInterview();
-candidate.submit("code");
-candidate.getInterviewStatus();
+const interview = new LiveCodingInterview();
+candidate.startInterview(interview);
+candidate.submit("passed");
+
+console.assert(candidate.name === "Gabriel");
+console.assert(candidate.passedInterviews.includes(interview));
+console.assert(!candidate.currentInterview);
