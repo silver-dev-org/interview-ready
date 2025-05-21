@@ -15,7 +15,7 @@ function getOrCreatePlayer() {
 }
 
 // use named parameters
-function evaluateChallenge(challenge, result, candidate, difficulty) {
+function evaluateChallenge({ challenge, result, candidate, difficulty }) {
   if (challenge === result) {
     return `${candidate} has successfully completed the ${difficulty} challenge`;
   }
