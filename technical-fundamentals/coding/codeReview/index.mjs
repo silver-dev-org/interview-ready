@@ -91,27 +91,26 @@ function groupByAgeGroups(people) {
 // General Programming
 
 // Dry
+function createBoard({ rows, cols }) {
+  return Array(rows)
+    .fill(0)
+    .map(() => Array(cols));
+}
 
 function initTicTacToe() {
-  const board = Array(3)
-    .fill(0)
-    .map(() => Array(3));
+  const board = createBoard({ rows: 3, cols: 3 });
   board[1][1] = "X";
   return board;
 }
 
 function initConnect4() {
-  const board = Array(6)
-    .fill(0)
-    .map(() => Array(7));
+  const board = createBoard({ rows: 6, cols: 7 });
   board[0][0] = "O";
   return board;
 }
 
 function initSudoku() {
-  return Array(9)
-    .fill(0)
-    .map(() => Array(9));
+  return createBoard({ rows: 9, cols: 9 });
 }
 
 // Over-abstractions
