@@ -115,25 +115,15 @@ function initSudoku() {
 
 // Over-abstractions
 
-function passInterview(candidate, interview) {
-  interview.finished();
-  candidate.passed();
-  candidate.submitOffer();
-}
-
-function failInterview(candidate, interview) {
-  interview.finished();
-  candidate.failed();
-  candidate.submitFeedback();
-}
-
 function completeInterview(candidate, interview, result) {
   interview.finished();
 
   if (result === "passed") {
-    passInterview(candidate, interview);
+    candidate.passed();
+    candidate.submitOffer();
   } else {
-    failInterview(candidate, interview);
+    candidate.failed();
+    candidate.submitFeedback();
   }
 }
 
