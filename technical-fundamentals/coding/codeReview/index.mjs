@@ -169,44 +169,29 @@ function validateUser(user) {
 // Catch what you can handle
 // Add context
 // Do not eat errors
+async function updateUser(user, retries = 0) {
+  const MAX_RETRIES = 3;
 
-const MAX_RETRIES = 3;
-
-async function updateUserBad(user, retries) {
   try {
     await API.updateUser(user);
   } catch (e) {
-    if (MAX_RETRIES === 3) {
-      return;
-    }
-
-    if (isFetchError(e)) {
-      return updateUserBad(user, retries + 1);
-    }
-    throw e;
-  }
-
-  return user;
-}
-
-async function updateUserGood(user, retries) {
-  try {
-    await API.updateUser(user);
-  } catch (e) {
-    if (MAX_RETRIES === 3) {
+    if (MAX_RETRIES === retries) {
       throw new Error(
-        `User ${user.id} was not updated after ${retries} retries.`,
+        `User ${user.id} was not updated after ${retries} retries.`
       );
     }
+
+    const retryCount = retries + 1;
 
     if (isFetchError(e)) {
       console.warn(
-        `Updating user ${user.id} failed due to a fetch error. Retrying... (${retries + 1}/${MAX_RETRIES})`,
+        `Updating user ${user.id} failed due to a fetch error. Retrying... (${retryCount}/${MAX_RETRIES})`
       );
-      return updateUserGood(user, retries + 1);
+      return updateUser(user, retryCount);
     }
+
     console.error(
-      `Updating user ${user.id} failed due to an unexpected error. Retries: ${retries}.`,
+      `Updating user ${user.id} failed due to an unexpected error. Retries: ${retries}.`
     );
     throw e;
   }
