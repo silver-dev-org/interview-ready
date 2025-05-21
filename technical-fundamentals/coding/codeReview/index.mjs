@@ -61,29 +61,31 @@ function countViews(key) {
     - Replace nesting with variables or top level fn calls
 */
 
-function parsePeople(people) {
-  const groupA = []; // minors
-  const groupB = []; // adults
-  const groupC = []; // elderly
+function groupByAgeGroups(people) {
+  const minors = [];
+  const adults = [];
+  const elderly = [];
 
-  let i = 0;
-  while (i < people.length) {
-    const person = people[i];
-    if (person.age && person.age > 18) {
-      if (person.age && person.age > 60) {
-        groupC.push(person);
-      } else {
-        groupB.push(person);
-      }
-    } else if (person.age) {
-      groupA.push(person);
-    } else {
-      delete people[i]; // remove invalid records
+  const hasAge = (person) => person.age;
+
+  people.filter(hasAge).forEach((person) => {
+    const ELDERLY_AGE_THRESHOLD = 60;
+    const ADULT_AGE_THRESHOLD = 18;
+
+    if (person.age > ELDERLY_AGE_THRESHOLD) {
+      elderly.push(person);
+      return;
     }
-    i++;
-  }
 
-  return [groupA, groupB, groupC];
+    if (person.age > ADULT_AGE_THRESHOLD) {
+      adults.push(person);
+      return;
+    }
+
+    minors.push(person);
+  });
+
+  return [minors, adults, elderly];
 }
 
 // General Programming
