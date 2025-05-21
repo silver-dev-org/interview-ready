@@ -23,17 +23,18 @@ function evaluateChallenge({ challenge, result, candidate, difficulty }) {
 }
 
 // Oversplitting functions - "The rule of 3"
-
-function splitWords(str) {
-  return str.split(" ");
-}
-function wordMapper(words) {
-  hash = {};
-  return words.map((word) => (hash[word] = hash[word] ? 0 : (hash[word] += 1)));
-}
-
 function wordCounter(string) {
-  return wordMapper(splitWords(string));
+  const words = string.split(" ");
+
+  const wordCount = words.reduce((hash, word) => {
+    hash[word] ??= 0;
+
+    hash[word]++;
+
+    return hash;
+  }, {});
+
+  return wordCount;
 }
 
 // Avoid sideEffects
