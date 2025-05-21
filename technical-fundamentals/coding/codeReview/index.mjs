@@ -202,31 +202,25 @@ async function updateUser(user, retries = 0) {
 // Cohesion vs Dependency
 
 class StringUtils {
-  stringCleaner(string) {
+  static #clean(string) {
     return string.trim().replaceAll("%20", " ");
   }
 
-  formatEmail(emailService) {
-    let result = emailService.message;
-    if (emailService.options.trim) {
-      result = stringCleaner(string);
+  static format(message, options) {
+    if (options.clean) {
+      return this.#clean(message);
     }
-    return result;
+
+    return message;
   }
 }
 
 class EmailService {
-  message;
-  options = { trim: true };
-
-  constructor(message, options) {
-    this.message = message;
-    this.options = options;
-  }
-  sendEmail() {
-    StringUtils.formatEmail(this);
+  sendEmail(message, recipient) {
+    return `Sent ${message} to ${recipient}`;
   }
 }
 
-const emailService = new EmailService(" test email ", { trim: true });
-emailService.sendEmail();
+const emailService = new EmailService(); // Initialize with credentials and SMTP config
+const formattedMessage = StringUtils.format(" test email ", { clean: true });
+emailService.sendEmail(formattedMessage, "test@silver.dev");
