@@ -42,10 +42,9 @@ function wordCounter(string) {
 const tracker = {};
 
 function countViews(key) {
-  if (!tracker[key]) {
-    tracker[key] = 0;
-  }
-  return ++tracker[key];
+  const views = tracker[key] || 0;
+
+  return views + 1;
 }
 
 // Variables & Control Flow
