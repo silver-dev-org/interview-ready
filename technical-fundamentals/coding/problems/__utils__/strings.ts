@@ -1,4 +1,4 @@
-const createIsSubstring = () => {
+export const createIsSubstring = () => {
   let called = false
 
   return (s1: string, s2: string) => {
@@ -17,4 +17,12 @@ const createIsSubstring = () => {
  * @param {string} s2 - Substring.
  * @return {boolean} If s1 contains s2.
  */
-export const isSubstring = createIsSubstring()
+export let isSubstring = createIsSubstring()
+
+/**
+ * For testing purposes we should be able to reset the called flag
+ * for every test.
+ */
+export const reassignIsSubstring = () => {
+  isSubstring=createIsSubstring()
+}

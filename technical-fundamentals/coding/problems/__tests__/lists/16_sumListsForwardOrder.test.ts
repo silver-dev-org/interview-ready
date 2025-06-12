@@ -1,6 +1,22 @@
 import sumListsForwardOrder, { Node } from "../../16_sumListsForwardOrder";
 
 describe("16 - sumListsForwardOrder", () => {
+  test("Sums one element each without carryover", () => {
+    const list1: Node<number> = {value: 1}
+    const list2: Node<number> = {value: 2}
+    const expected: Node<number> = {value: 3}
+    const result = sumListsForwardOrder(list1, list2)
+    expect(result).toEqual(expected)
+  })
+
+  test("Sums two elements each without carryover", () => {
+    const list1: Node<number> = {value: 1, next: {value: 3}}
+    const list2: Node<number> = {value: 2, next: {value: 3}}
+    const expected: Node<number> = {value: 3, next: {value: 6}}
+    const result = sumListsForwardOrder(list1, list2)
+    expect(result).toEqual(expected)
+  })
+
   test("sums two non-empty lists without carryover", () => {
     // 123 + 456 = 579
     const list1: Node<number> = {
