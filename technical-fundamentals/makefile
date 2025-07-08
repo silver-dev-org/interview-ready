@@ -27,4 +27,4 @@ test: venv
 
 clean:
 	rm -rf $(VENV_NAME)
-	echo "🗑️ Virtual environment removed."
+	echo "Virtual environment removed."
