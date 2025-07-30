@@ -239,6 +239,21 @@ export function DangerousIdentifier() {
   );
 }
 
+export function indirectStateManagement() {
+  const [errors, setErrors] = useState({})
+
+  function showErrors(key, value) { setErrors(...errors, [key]: value }
+  function hideErrors() { setErrors({}) }
+  
+  return (
+    <div>
+      {errors.button && <p>{errors.value}</p>}
+      <button onClick={() => showErrors('button', 'Clicked error button')}>ThrowError</button>
+      <button onClick={() => hideErrors() }>Clean Errors</button>
+    </div>
+  );
+}
+
 //
 export function IncorrectDependencies({ records }) {
   useEffect(() => {
