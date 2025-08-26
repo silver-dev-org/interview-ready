@@ -4,8 +4,8 @@
   "description": "Crackin the coding interview problems",
   "main": "index.js",
   "scripts": {
-    "test": "vitest ./coding/problems/__tests__/*",
-    "test-coding": "vitest ./coding/__tests__/*",
+    "test": "vitest ./coding/problems/__tests__/",
+    "test-coding": "vitest ./coding/__tests__/",
     "strings": "vitest ./coding/problems/__tests__/strings --reporter=default --reporter=./silverReporter.ts",
     "lists": "vitest ./coding/problems/__tests__/lists --reporter=default --reporter=./silverReporter.ts",
     "stacks": "vitest ./coding/problems/__tests__/stacks --reporter=default --reporter=./silverReporter.ts",
