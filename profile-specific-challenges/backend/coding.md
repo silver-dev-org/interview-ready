@@ -2,13 +2,17 @@
 
 ## Computer Science & Competitive Programming
 
-1. Build an LRU Cache. Get detailed requirements at https://leetcode.com/problems/lru-cache/
+1. Build an LRU Cache. Get detailed requirements: https://leetcode.com/problems/lru-cache/
 
-2. Lowest Common Ancestor at https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
+2. Lowest Common Ancestor: https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
 
-3. https://leetcode.com/problems/maximize-happiness-of-selected-children/description/
+3. Maximize happines of selected children: https://leetcode.com/problems/maximize-happiness-of-selected-children/description/
 
 4. Write an algorithm to flatten an Array and one to flatten an object. (turn all keys into top-level keys)
+
+## Connect4
+
+Connect4 is a game where two players take turns dropping pieces into a 7x6 grid. The first player to place 4 tokens in a row horizontally, vertically or diagonally wins. The players always insert a token in a column, and the token drops to the lowest available space. The input is a sequence of numbers representing the column where the alternating active player places a token. The output is the winner of the game, represented by the numbers "1" for player 1, "2" for player 2, and "0" for no winner.
 
 ## Code Design
 
