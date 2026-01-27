@@ -7,7 +7,6 @@ export default function isUnique(str: string): boolean {
 
     const sorted = str.split("").sort().join("");
     let prev = null;
-    console.log(sorted);
     for(let i = 0; i < sorted.length; i++) {
         if(sorted[i] === prev) return false;
         prev = sorted[i];
