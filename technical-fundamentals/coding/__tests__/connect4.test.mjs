@@ -17,7 +17,7 @@ describe("Connect4", () => {
 
   it("it should detect horizontal winning", () => {
     const c4 = new Connect4({ width: 10, height: 10 });
-    for (let i = 0; i < 4; i++) {
+    for (let i = 1; i <= 4; i++) {
       c4.play(i);
       c4.play(i);
     }
@@ -26,7 +26,7 @@ describe("Connect4", () => {
 
   it("it should detect vertical winning", () => {
     const c4 = new Connect4({ width: 10, height: 10 });
-    for (let i = 0; i < 4; i++) {
+    for (let i = 1; i <= 4; i++) {
       c4.play(1);
       c4.play(2);
     }
