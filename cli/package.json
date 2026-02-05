@@ -1,0 +1,32 @@
+{
+  "name": "interview-ready-cli",
+  "version": "1.0.0",
+  "description": "CLI tool for submitting Interview Ready coding challenges",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js"
+  },
+  "keywords": ["cli", "interview", "coding-challenges"],
+  "author": "Silver.dev",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^11.1.0",
+    "@clerk/clerk-sdk-node": "^5.0.0",
+    "axios": "^1.6.0",
+    "chalk": "^5.3.0",
+    "ora": "^7.0.1",
+    "conf": "^12.0.0",
+    "inquirer": "^9.2.0",
+    "execa": "^8.0.1",
+    "simple-git": "^3.20.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/inquirer": "^9.0.7",
+    "typescript": "^5.3.3",
+    "vitest": "^2.0.5"
+  }
+}

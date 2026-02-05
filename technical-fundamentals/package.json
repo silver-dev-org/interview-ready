@@ -6,11 +6,17 @@
   "scripts": {
     "test": "vitest ./coding/problems/__tests__/",
     "test-coding": "vitest ./coding/__tests__/",
-    "strings": "vitest ./coding/problems/__tests__/strings --reporter=default --reporter=./silverReporter.ts",
-    "lists": "vitest ./coding/problems/__tests__/lists --reporter=default --reporter=./silverReporter.ts",
-    "stacks": "vitest ./coding/problems/__tests__/stacks --reporter=default --reporter=./silverReporter.ts",
-    "trees": "vitest ./coding/problems/__tests__/trees --reporter=default --reporter=./silverReporter.ts",
-    "recursion": "vitest ./coding/problems/__tests__/recursion --reporter=default --reporter=./silverReporter.ts"
+    "strings": "vitest ./coding/problems/__tests__/strings --reporter=default",
+    "lists": "vitest ./coding/problems/__tests__/lists --reporter=default",
+    "stacks": "vitest ./coding/problems/__tests__/stacks --reporter=default",
+    "trees": "vitest ./coding/problems/__tests__/trees --reporter=default",
+    "recursion": "vitest ./coding/problems/__tests__/recursion --reporter=default",
+    "cli": "node ../cli/dist/index.js",
+    "cli:login": "node ../cli/dist/index.js login",
+    "cli:logout": "node ../cli/dist/index.js logout",
+    "cli:submit": "node ../cli/dist/index.js submit",
+    "cli:status": "node ../cli/dist/index.js status",
+    "cli:whoami": "node ../cli/dist/index.js whoami"
   },
   "keywords": [
     "cracking",

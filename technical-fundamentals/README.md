@@ -11,19 +11,75 @@ We recommend reading the Abridged Problems version that includes some of the the
    ```bash
    npm install
    ```
-3. Run the Jest test suite:
+3. Install CLI dependencies:
    ```bash
-    npm test
-    ```
+   cd ../cli
+   npm install
+   npm run build
+   cd ../technical-fundamentals
+   ```
+4. Run the Jest test suite:
+   ```bash
+   npm test
+   ```
 
 ### Running Tests
-You can run tests for specific problems by providing the problem name to Vitest. 
+You can run tests for specific problems by providing the problem name to Vitest.
 
 For example:
 
 ```bash
 npx vitest -t minimalTree
 ```
+
+Or run tests for a specific category:
+
+```bash
+npm run strings
+npm run lists
+npm run stacks
+npm run trees
+npm run recursion
+```
+
+## Submitting Your Solutions
+
+Once you've completed the coding challenges and all tests pass, you can submit your solutions to the Silver.dev Candidate Portal using our CLI tool.
+
+### First Time Setup
+
+1. Authenticate with your Silver account:
+   ```bash
+   npm run cli:login
+   ```
+   This will open your browser to authenticate. Your session will remain active for 30 days.
+
+### Submitting Solutions
+
+2. Complete the challenges for a category (e.g., strings, lists, trees)
+3. Run the tests to ensure they all pass:
+   ```bash
+   npm run strings
+   ```
+4. Submit your solutions:
+   ```bash
+   npm run cli:submit strings
+   ```
+
+The CLI will:
+- ✓ Verify you haven't modified any test files
+- ✓ Run all tests to ensure they pass
+- ✓ Collect your solution code
+- ✓ Submit everything to the portal
+- ✓ Provide a link to view your submission
+
+### Other CLI Commands
+
+- `npm run cli:status` - View your submission progress across all categories
+- `npm run cli:whoami` - Check which account you're authenticated as
+- `npm run cli:logout` - Sign out from the CLI
+
+**Important:** The CLI verifies that test files haven't been modified. Make sure you're only editing solution files in the `problems/` directory, not the test files in `__tests__/`.
 
 ## Contributing
 1. Fork the repository.

@@ -3,3 +3,7 @@
 .next
 **/node_modules
 coding-challenges/yarn.lock
+
+# CLI build artifacts
+cli/dist/
+cli/.env
