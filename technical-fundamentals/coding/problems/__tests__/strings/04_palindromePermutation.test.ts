@@ -29,6 +29,10 @@ describe("04 - palindromePermutation", () => {
     expect(palindromePermutation("RaceCar")).toEqual(true);
   });
 
+  test("String with repeated letters", () => {
+    expect(palindromePermutation("rrracecrrar")).toEqual(true);
+  });
+
   test("String with non-alphanumeric characters", () => {
     expect(palindromePermutation("12321")).toEqual(true);
   });
