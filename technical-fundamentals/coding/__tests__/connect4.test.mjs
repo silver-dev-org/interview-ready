@@ -4,9 +4,9 @@ import { Connect4, PLAYER_ONE, PLAYER_TWO } from "../connect4.mjs";
 describe("Connect4", () => {
   it("It should allow you play within bounds", async () => {
     const c4 = new Connect4({ width: 10, height: 10 });
-    expect(c4.getValue(10, 1)).toBeFalsy();
+    expect(c4.getValue(5, 1)).toBeFalsy();
     c4.play(1);
-    expect(c4.getValue(10, 1)).toEqual(PLAYER_ONE);
+    expect(c4.getValue(5, 1)).toEqual(PLAYER_ONE);
   });
 
   it("It should do nothing if you play out of bounds", async () => {
