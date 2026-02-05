@@ -4,14 +4,14 @@ describe('loopDetection', () => {
     test('returns null if the list has only one node', () => {
         const node: Node<number> = { value: 1 };
         const result = loopDetection(node);
-        expect(result).toBeUndefined();
+        expect(result).toBeNull();
     });
 
     test('returns null if the list does not have a loop', () => {
         // List: 1 -> 2 -> 3 -> 4 -> 5
         const list: Node<number> = { value: 1, next: { value: 2, next: { value: 3, next: { value: 4, next: { value: 5 } } } } };
         const result = loopDetection(list);
-        expect(result).toBeUndefined();
+        expect(result).toBeNull();
     });
 
     test('returns the node at the beginning of the loop', () => {
